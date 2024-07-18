@@ -1,0 +1,33 @@
+#include <stdio.h>
+void count_duplicates(int arr[], int size) 
+{
+    int count[100] = {0};
+    int i, j, max = -1;
+    for (i = 0; i < size; i++) 
+    {
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+    for (i = 0; i < size; i++) 
+    {
+        count[arr[i]]++;
+    }
+    int duplicates = 0;
+    for (i = 0; i <= max; i++)
+    {
+        if (count[i] > 1)
+        {
+            duplicates += count[i] - 1;
+        }
+    }
+    printf("Number of duplicate elements: %d\n", duplicates);
+}
+int main()
+{
+    int arr[] = {1, 2, 3, 2, 4, 5, 5, 6};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    count_duplicates(arr, size);
+    return 0;
+}
